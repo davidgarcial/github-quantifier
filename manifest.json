@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2,
+    "name": "GitHub Quantifier",
+    "description": "Chrome extension to quantifier GitHub projects",
+    "short_name": "GitHub Quantifier",
+    "version": "0.0.1",
+    "author": "davidgarcial",
+    "homepage_url": "https://github.com/davidgarcial/github-quantifier",
+    "icons": {
+        "16": "assets/images/icon.png",
+        "48": "assets/images/icon.png",
+        "128": "assets/images/icon.png"
+    },
+    "permissions": [
+        "https://github.com/*",
+        "contextMenus",
+        "activeTab"
+    ],
+    "optional_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "background": {
+        "scripts": [
+            "dist/background.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://github.com/*/*/projects/*"
+            ],
+            "js": [
+                "dist/story-points.js"
+            ]
+        }
+    ]
+}
